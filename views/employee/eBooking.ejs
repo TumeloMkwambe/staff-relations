@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carwash Booking System</title>
+    <link rel="stylesheet" href="carwash.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Polished Carwash Services</h1>
+    </header>
+      <section>
+        <h2>Book a Carwash</h2>
+        <form id="bookingForm">
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required />
+          </div>
+          <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" required />
+          </div>
+          <!-- Add other input fields for car details, time, etc. -->
+          <button type="submit">Book Now</button>
+        </form>
+      </section>
+      <section>
+        <h2>Employee Bookings</h2>
+        <table id="bookingsTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Date</th>
+              <!-- Add other table headers for booking details -->
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Bookings will be dynamically added here -->
+          </tbody>
+        </table>
+      </section>
+    <script src="eBooking.js" type="module"></script>
+  </body>
+</html>

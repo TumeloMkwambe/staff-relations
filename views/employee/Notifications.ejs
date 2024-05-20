@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Notifications</title>
+    <link rel="stylesheet" type="text/css" href="notifications.css" />
+  </head>
+  <body>
+    <h1>Employee Notifications</h1>
+    <form id="employeeForm">
+      <label for="employeeName">Employee Name:</label>
+      <input type="text" id="employeeName" required />
+      <button type="submit">Submit</button>
+    </form>
+    <section id="notificationsSection" style="display: none">
+      <div id="notification"></div>
+    </section>
+    <script src="notifications.js" type="module"></script>
+  </body>
+</html>

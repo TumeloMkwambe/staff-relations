@@ -1,0 +1,95 @@
+body {
+    background-color: #A1C3DC;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1,
+h2 {
+    color: #11212D;
+    text-align: center;
+}
+
+#mealsList {
+    margin-bottom: 20px;
+}
+
+#mealsList div {
+    border: 2px solid #8AB2D5;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#mealsList div p {
+    margin: 0;
+}
+
+button {
+    background-color: #8AB2D5;
+
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #003366;
+    /* Darker blue on hover */
+}
+
+#dateBooked {
+    color: #666;
+}
+
+#cancelMealBtn {
+    background-color: #ff6600;
+    /* Carwash orange */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: none;
+}
+
+#cancelMealBtn:hover {
+    background-color: #cc5200;
+    /* Darker orange on hover */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Table header styles */
+thead th {
+    background-color: #8AB2D5;
+    color: #11212D;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Table body styles */
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #8AB2D5;
+}
+
+/* Larger font size for table content */
+table,
+th,
+td {
+    font-size: 16px;
+}
+
+/* Larger padding for table cells */
+td,
+th {
+    padding: 12px;
+}

@@ -1,0 +1,128 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+/* Main table container */
+.table {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Header styles */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #11789B;
+    /* Updated color to match carwash */
+}
+
+/* Add Task button */
+button {
+    background-color: #11789B;
+    /* Updated color to match carwash */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #0a5d7c;
+    /* Updated color to match carwash */
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #11789B;
+    /* Updated color to match carwash */
+    color: white;
+}
+
+/* Radio button and label styles */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Status label styles */
+label {
+    margin-right: 15px;
+}
+
+/* Input styles */
+input[type="time"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 80px;
+}
+
+input[type="time"]:focus {
+    outline: none;
+    border-color: #11789B;
+    /* Updated color to match carwash */
+}
+
+
+.task-list tr td {
+    border: none;
+}
+
+.task-list th {
+    background-color: #11789B;
+    /* Updated color to match carwash */
+    color: white;
+}
+
+.task-list td {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.task-list .edit {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.task-list .edit:hover {
+    background-color: #ffca28;
+    border-color: #ffca28;
+}
+
+.task-list .delete {
+    background-color: #dc3545;
+    color: #fff;
+    border-color: #dc3545;
+}
+
+.task-list .delete:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}

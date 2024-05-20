@@ -1,0 +1,41 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #A1C3DC;
+  color: #11212D;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #11212D;
+  text-align: center;
+}
+
+.message-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.message-header h2 {
+  color: #11212D;
+  margin: 0;
+}
+
+.message-header span {
+  color: #11212D;
+  font-size: 14px;
+}
+
+.message-body {
+  line-height: 1.5;
+}

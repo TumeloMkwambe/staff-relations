@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #8AB2D5;
+    color: #11212D;
+    padding-top: 60px;
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px;
+  }
+  
+  .sidebar ul li a {
+    color: #11212D;
+    text-decoration: none;
+  }
+  
+  .toggleButton {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #11212D;
+    cursor: pointer;
+  }
+  
+  /* Center portion */
+  .center {
+    margin-left: 200px;
+    padding: 20px;
+  }

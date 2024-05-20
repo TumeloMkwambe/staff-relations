@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Feedback</title>
+    <link rel="stylesheet" type="text/css" href="eFeedback.css">
+</head>
+<body>
+    <h1>Submit Your Feedback</h1>
+    <form id="feedbackForm">
+        <div class="form-group">
+            <label for="yourName">Your Name</label>
+            <input type="text" id="yourName" name="yourName" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+            <label for="employeeName">Employee Name</label>
+            <input type="text" id="employeeName" name="employeeName" placeholder="Enter the employee's name" required>
+        </div>
+        <div class="rate">
+            <input type="radio" id="star5" name="rate" value="5" />
+            <label for="star5" title="5 stars">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4" />
+            <label for="star4" title="4 stars">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3" />
+            <label for="star3" title="3 stars">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label for="star2" title="2 stars">2 stars</label>
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label for="star1" title="1 star">1 star</label>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+     <script src="eFeedback.js" type="module"></script>
+</body>
+</html>

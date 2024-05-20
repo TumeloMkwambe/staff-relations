@@ -1,0 +1,142 @@
+:root{
+    --color-1: #E9E0DB;
+    --color-2: #127157;
+    --color-3: white;
+    --font-1: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 99.8vh;
+    margin: auto;
+}
+
+header{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-2);
+
+    #info{
+        width: 30%;
+        height: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        list-style-type: none;
+        position: relative;
+        bottom: 0%;
+        left: 5%;
+        
+        li{
+            width: 40%;
+            height: 100%;
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--color-1);
+            font-family: var(--font-1);
+            position: relative;
+            right: 5%;
+
+            a:hover{
+                color: var(--color-3);
+            }
+        }
+    }
+    #login{
+        width: 20%;
+        height: 50%;
+        list-style-type: none;
+        position: relative;
+        bottom: 0%;
+        left: 40%;
+        text-align: center;
+        
+        a{
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: var(--color-1);
+            font-family: var(--font-1);
+        }
+        a:hover{
+            color: var(--color-3);
+        }
+    }
+
+}
+
+
+main{
+    width: 100%;
+    height: 90%;
+    background-color: var(--color-1);
+
+    #home{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        top: 10%;
+        width: 90%;
+        justify-content: space-between;
+        margin: auto;
+
+        #scrambled{
+            width: 32%;
+            height: 50%;
+            position: relative;
+            top: 50%;
+            font-family: var(--font-1);
+            color: var(--color-2);
+            word-spacing: 0.7rem;
+            line-height: 0.7rem;
+        }
+
+        #arrow{
+            width: 5%;
+            font-size: 5rem;
+            color: var(--color-3);
+        }
+
+        #unscrambled{
+            width: 60%;
+            height: 50%;
+            position: relative;
+            left: 3%;
+            font-family: var(--font-1);
+            color: var(--color-2);
+            word-spacing: 2rem;
+            line-height: 2rem;
+
+            span{
+                color: var(--color-3);
+            }
+        }
+    }
+
+    #solution{
+        width: 100%;
+        display: inline;
+        position: relative;
+        top: 15%;
+        left: 5%;
+        color: var(--color-3);
+        font-family: var(--font-1);
+        font-size: 1rem;
+    }
+    #solution2{
+        width: 100%;
+        display: inline;
+        position: relative;
+        top: 15%;
+        left: 4.9%;
+        color: var(--color-2);
+        font-family: var(--font-1);
+        font-size: 1rem;
+    }
+
+}

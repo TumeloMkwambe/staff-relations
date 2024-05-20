@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="employee.css">
+    <script src="https://kit.fontawesome.com/4f347c46d9.js" crossorigin="anonymous"></script>
+    <title>Employee Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+              <button class="toggle-btn"><i class="fas fa-bars"></i></button>
+            </div>
+            <nav>
+              <ul>
+                <li><a href="#" class="homepage"><i class="fas fa-home"></i> <span>Homepage</span></a></li>
+                <li><a href="#" class="timesheets"><i class="fas fa-clipboard"></i> <span>Timesheets</span></a></li>
+                <li><a href="#" class="mealbooking"><i class="fas fa-utensils"></i> <span>Meal Booking</span></a></li>
+                <li><a href="#" class="carwash"><i class="fas fa-car"></i> <span>Car Wash</span></a></li>
+                <li><a href="#" class="notifications"><i class="fas fa-bell"></i> <span>Notifications</span></a></li>
+                <li><a href="#" class="messages"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+                <li><a href="#" class="feedback"><i class="fa-solid fa-star"></i> <span>Feedback</span></a></li>
+                <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+              </ul>
+            </nav>
+          </div>
+
+        <div class="content">
+            <div id="contentContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            loadHomepage();
+        });
+
+        function loadHomepage() {
+            fetch('homepage.ejs')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('contentContainer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading homepage:', error));
+        }
+    </script>
+    <script src="sidebar.js"></script>
+</body>
+</html>

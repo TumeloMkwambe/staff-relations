@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Management</title>
+  <link rel="stylesheet" href="eSection.css">
+</head>
+<body>
+  <header>
+    <h1>Employee Management</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Create New Employee</h2>
+      <form id="newEmployeeForm">
+        <div class="form-group">
+          <label for="nameInput">Name:</label>
+          <input type="text" id="nameInput" placeholder="Enter name" required>
+        </div>
+        <div class="form-group">
+          <label for="surnameInput">Surname:</label>
+          <input type="text" id="surnameInput" placeholder="Enter surname" required>
+        </div>
+        <div class="form-group">
+          <label for="emailInput">Email:</label>
+          <input type="email" id="emailInput" placeholder="Enter email" required>
+        </div>
+        <div class="form-group">
+          <label for="roleSelect">Role:</label>
+          <select id="roleSelect" required></select>
+        </div>
+        <div class="form-group">
+          <label for="permissionsSelect">Permissions:</label>
+          <select id="permissionsSelect" required></select>
+        </div>
+        <button type="submit">Create Employee</button>
+      </form>
+    </section>
+    <section>
+      <h2>Employees</h2>
+      <table id="employeeTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Permissions</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Employees will be dynamically added here -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <script src="eSection.js"></script>
+</body>
+</html>
