@@ -3,6 +3,9 @@ const express = require('express');
 const { auth } = require('express-openid-connect');
 const { ManagementClient, ResponseError } = require('auth0');
 const path = require('path');
+var request = require("request");
+const axios = require('axios');
+const { headers } = require('next/headers');
 require('dotenv').config();
 const app = express();
 const staticPath = path.join(__dirname, "views");
@@ -13,6 +16,7 @@ require('dotenv').config();
 let id;
 let email;
 let name;
+let token;
 /** ******************************************************************************************************************* */
 
 
@@ -114,6 +118,7 @@ app.get('/signin', function (req, res, next) {
 /** STAFF ROUTES */
 app.get('/admin', (req, res) => {
     if(req.oidc.isAuthenticated()){
+        console.log(token);
         email = req.oidc.user.email;
         name = req.oidc.user.name;
         res.render('./admin/Admin.ejs');
@@ -185,6 +190,7 @@ app.get('/admin/employees', (req, res) => {
     id = req.oidc.user.sub;
     getUserRoles(id).then((result) => {
         if(result.data[0].id == 'rol_cXmp5WZeCYfL0JWm'){
+            removeUserRole("auth0|66305ff998acd9be4cb207f1", "rol_Ymj8mgv2HKBLuXor");
             res.render('./admin/eSection.ejs');
         }
         else{
@@ -257,6 +263,13 @@ app.get('/userinformation', (req, res) => {
 });
 
 app.get('/users', (req, res) => {
+    console.log(token);
+    axios.request(body).then((response) => {
+        console.log(JSON.stringify(response.data));
+        }).catch((error) => {
+            console.log(error);
+        });
+
     let userIdArr = [];
     getUsers().then((response) => {
         data = response.data;
@@ -275,6 +288,37 @@ app.get('/users', (req, res) => {
     });
 });
 
+
+/** TOKENS AND STUFF */
+
+var options = { method: 'POST',
+  url: 'https://boogeraids.eu.auth0.com/oauth/token',
+  headers: { 'content-type': 'application/json' },
+  body: `{"client_id":"${process.env.M2MAPPCLIENTID}","client_secret":"${process.env.M2MAPPCLIENTSECRET}","audience":"${process.env.AUDIENCE}","grant_type":"client_credentials"}` };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+  token = body;
+});
+
+/** ADD, REMOVE AND UPDATE  */
+let data = JSON.stringify({
+  "roles": [
+    "rol_TtV8H0R8XuKJJxVq"
+  ]
+});
+
+const userId = "auth0|662212096589c98ee4812929";
+let body = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: `https://boogeraids.eu.auth0.com/api/v2/users/${userId}/roles`,
+  headers: {
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
 
 
 
