@@ -129,15 +129,16 @@ function loadTasksFromFirebase(email) {
     });
 }
 
-async function displayTimesheets(){
-    await fetch("http://localhost:3000/userinformation").then((response) => {
-        return response.json()
-    }).then((json) => {
-        let email = json.email;
+// Event listener for form submission
+document.querySelector("#retrieveTimesheetForm").addEventListener("submit", async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    const email = document.querySelector("#userEmail").value;
+    if (email) {
         loadTasksFromFirebase(email);
-    });
-}
-displayTimesheets();
+    } else {
+        showAlert("Please enter an email address.", "danger");
+    }
+});
 
 // Event listener for editing a task
 document.addEventListener("click", (e) => {

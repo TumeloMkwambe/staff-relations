@@ -1,50 +1,58 @@
+:root{
+    --color-1: #fcfcfc;
+    --color-2: #305673;
+    --color-3: #cc5740;
+  }
+
 /* Basic styles for the page */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: var(--color-1);
 }
 
 h1,
 h2 {
-    color: #333;
+    color: var(--color-2);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: var(--color-2);
 }
 
 th,
 td {
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--color-2);
     padding: 8px;
     text-align: left;
 }
 
 th {
-    background-color: #e9ecef;
+    background-color: var(--color-2);
+    color: var(--color-1);
     font-weight: bold;
 }
 
 td {
-    background-color: #f8f9fa;
+    background-color: var(--color-1);
 }
 
 table tbody tr:nth-child(even) td {
-    background-color: #f1f3f5;
+    background-color: var(--color-1);
 }
 
 table tbody tr:hover td {
-    background-color: #e2e6ea;
+    background-color: var(--color-2);
+    color: var(--color-1);
 }
 
 button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--color-2);
+    color: var(--color-3);
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -53,7 +61,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: var(--color-3);
 }
 
 button:focus {

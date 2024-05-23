@@ -87,7 +87,7 @@ app.get('/signin', function (req, res, next) {
         const id = req.oidc.user.sub;
         getUserRoles(id).then((result) => {
             if(result.data.length == 0){ // User with no role
-                res.redirect('/profile');
+                res.redirect('/unassigned');
             }
             else if(result.data[0].id == 'rol_cXmp5WZeCYfL0JWm'){ // Admin Route
                 res.redirect('/admin');
@@ -142,11 +142,9 @@ app.get('/employee', (req, res) => {
         res.redirect('/signin');
     }
 });
-app.get('/profile', (req, res) => {
+app.get('/unassigned', (req, res) => {
     if(req.oidc.isAuthenticated()){
-        res.render('Profile', {
-            userData: req.oidc.user
-        });
+        res.render('./homepage/unassigned.ejs');
     }
     else{
         res.redirect('/signin');
@@ -251,7 +249,7 @@ app.get('/employee/eBookMeal', (req, res) => {
 
 /** ************************************************************************************************************************ */
 /** API FOR USER INFORMATION */
-app.get('/userinfo', (req, res) => {
+app.get('/userinformation', (req, res) => {
     res.json({ 
         "email": email,
         "name": name,

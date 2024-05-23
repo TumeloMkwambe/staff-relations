@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard</title>
-<link rel="stylesheet" type="text/css" href="./Admin.css">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Admin.css">
+    <script src="https://kit.fontawesome.com/4f347c46d9.js" crossorigin="anonymous"></script>
+    <title>Admin Dashboard</title>
 </head>
 <body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+              <button class="toggle-btn"><i class="fas fa-bars"></i></button>
+            </div>
+            <nav>
+              <ul>
+                <li><a href="#" class="homepage"><i class="fas fa-home"></i> <span>Homepage</span></a></li>
+                <li><a href="#" class="Employees"><i class="fa-solid fa-user"></i> <span>Employees</span></a></li>
+                <li><a href="#" class="Bookings"><i class="fas fa-book"></i> <span>Bookings</span></a></li>
+                <li><a href="#" class="timesheets"><i class="fas fa-clipboard"></i> <span>Timesheets</span></a></li>
+                <li><a href="#" class="meals"><i class="fas fa-utensils"></i> <span>Meals</span></a></li>
+              </ul>
+            </nav>
+          </div>
 
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
-  <button class="toggleButton" onclick="toggleSidebar()">☰</button>
-  <ul>
-    <li><a href="#" onclick="showDashboard()">Dashboard</a></li>
-    <li><a href="#" onclick="showTasks()">Tasks</a></li>
-    <li><a href="/admin/employees" onclick="showEmployees()">Employees</a></li>
-    <li><a href="/admin/bookings" onclick="showMessages()">Bookings</a></li>
-    <li><a href="#" onclick="showMeetings()">Meetings</a></li>
-    <li><a href="/admin/timesheet" onclick="showTimesheet()">Timesheet</a></li>
-    <li><a href="/admin/createmeals" onclick="showMeals()">Meals</a></li>
-  </ul>
-</div>
-<!-- Sidebar -->
+        <div class="content">
+            <div id="contentContainer"></div>
+        </div>
+    </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            loadHomepage();
+        });
 
-<!-- Center portion -->
-<div class="center" id="center">
-  <h1>Welcome to Admin Dashboard</h1>
-
-  <!-- HTML code for the timesheet section -->
-
-
-  <!-- Content will be dynamically displayed here based on user selection -->
-</div>
-<div class = "under center" id="under_center"></div>
-
-<script src="Admin.js"></script>
+        function loadHomepage() {
+            fetch('homepage.ejs')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('contentContainer').innerHTML = data;
+                    console.log(document.getElementById('contentContainer').main)
+                })
+                .catch(error => console.error('Error loading homepage:', error));
+        }
+    </script>
+    <script src="sidebar.js"></script>
 </body>
 </html>
