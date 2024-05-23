@@ -1,4 +1,5 @@
- import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+// import { name } from "ejs";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getDatabase, ref, onValue, remove, set, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
 // Firebase configuration
@@ -113,7 +114,7 @@ cancelMealBtn.addEventListener('click', () => {
 });
 
 // Function to fetch existing bookings
-function fetchMealBookings() {
+function fetchMealBookings(employeeName) {
     onValue(bookingsRef, (snapshot) => {
         const bookings = snapshot.val();
         if (bookings) {
@@ -124,14 +125,16 @@ function fetchMealBookings() {
             // Display each booking
             Object.keys(bookings).forEach((key) => {
                 const booking = bookings[key];
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${booking.employee}</td>
-                    <td>${booking.date}</td>
-                    <td>${booking.mealType}</td>
-                    <td><button onclick="deleteBooking('${key}')">Delete</button></td>
+                if(booking.employee == employeeName){
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${booking.employee}</td>
+                        <td>${booking.date}</td>
+                        <td>${booking.mealType}</td>
+                        <td><button onclick="deleteBooking('${key}')">Delete</button></td>
                 `;
                 tbody.appendChild(row);
+                }
             });
         }
     });
@@ -149,4 +152,12 @@ window.deleteBooking = function (bookingKey) {
 };
 
 // Fetch existing bookings on page load
-fetchMealBookings();
+async function displayBookedMeals(){
+    await fetch("http://localhost:3000/userinformation").then((response) => {
+        return response.json()
+    }).then((json) => {
+        let name = json.name;
+        fetchMealBookings(name);
+    });
+}
+displayBookedMeals();

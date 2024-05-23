@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
           .then(response => response.text())
           .then(html => {
             contentContainer.innerHTML = html;
-            initializeTimesheets();
+            initializeTimesheet();
           })
           .catch(error => console.error('Error loading content:', error));
       } else if (link.textContent.trim() === 'Meal Booking') {

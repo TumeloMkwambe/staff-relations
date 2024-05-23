@@ -62,12 +62,12 @@ async function renderEmployees() {
   const tbody = employeeTable.querySelector('tbody');
   tbody.innerHTML = '';
   console.log("pre");
-  await fetch("https://staffrelations2024.azurewebsites.net/users").then((response) => {
+  await fetch("http://localhost:3000/users").then((response) => {
     return response.json()
   }).then((json) => {
     let employees = json;
     console.log(employees);
-      surname = 'blank';
+      let surname = 'blank';
       employees.forEach(employee => {
         const row = document.createElement('tr');
         row.innerHTML = `

@@ -6,6 +6,11 @@
     <title>Admin Create Meals</title>
     <style>
       /* CSS styles matching carwash colors */
+      :root{
+        --color-1: #fcfcfc;
+        --color-2: #305673;
+        --color-3: #cc5740;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -14,12 +19,12 @@
 
       body {
         font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
+        background-color: var(--color-1);
         padding: 20px;
       }
 
       .table {
-        background-color: #fff;
+        background-color: var(--color-1);
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         padding: 20px;
@@ -31,12 +36,12 @@
       }
 
       .header h1 {
-        color: #004080; /* Carwash blue */
+        color: var(--color-2); /* Carwash blue */
       }
 
       button {
-        background-color: #004080; /* Carwash blue */
-        color: white;
+        background-color: var(--color-2); /* Carwash blue */
+        color: var(--color-1);
         border: none;
         border-radius: 4px;
         padding: 10px 20px;
@@ -45,7 +50,8 @@
       }
 
       button:hover {
-        background-color: #003366; /* Darker blue on hover */
+        background-color: var(--color-3); /* Darker blue on hover */
+        color: var(--color-1);
       }
 
       table {
@@ -60,14 +66,14 @@
       }
 
       th {
-        background-color: #004080; /* Carwash blue */
-        color: white;
+        background-color: var(--color-2); /* Carwash blue */
+        color: var(--color-1);
       }
 
       .editBtn,
       .deleteBtn {
-        background-color: #ff6600; /* Carwash orange */
-        color: white;
+        background-color: var(--color-3); /* Carwash orange */
+        color: var(--color-1);
         border: none;
         border-radius: 4px;
         padding: 5px 10px;
@@ -77,12 +83,12 @@
 
       .editBtn:hover,
       .deleteBtn:hover {
-        background-color: #cc5200; /* Darker orange on hover */
+        background-color: var(--color-2); /* Darker orange on hover */
       }
 
       select {
         padding: 8px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--color-1);
         border-radius: 4px;
         width: 100%;
         max-width: 150px;
@@ -90,7 +96,7 @@
 
       input {
         padding: 8px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--color-2);
         border-radius: 4px;
         width: 100%;
         max-width: 150px;
