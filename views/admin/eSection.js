@@ -1,8 +1,13 @@
-// employee.js
-
-// Sample data for roles and permissions
+// eSection.js
+// Sample data for roles
 const roles = ['Admin', 'Manager', 'Employee'];
-const permissions = ['View Reports', 'Manage Employees', 'Manage Inventory'];
+
+// Sample data for employees
+let employees = [
+  { id: 1, name: 'Nicki Minaj', email: 'pink@example.com', role: 'Admin' },
+  { id: 2, name: 'Lana Del Rey', email: 'black@example.com', role: 'Manager' },
+  { id: 3, name: 'Donald Trump', email: 'red@example.com', role: 'Employee' }
+];
 
 // DOM elements
 const employeeTable = document.getElementById('employeeTable');
@@ -10,11 +15,9 @@ const newEmployeeForm = document.getElementById('newEmployeeForm');
 const nameInput = document.getElementById('nameInput');
 const emailInput = document.getElementById('emailInput');
 const roleSelect = document.getElementById('roleSelect');
-const permissionsSelect = document.getElementById('permissionsSelect');
 
-// Populate role and permissions options
+// Populate role options
 populateOptions(roleSelect, roles);
-populateOptions(permissionsSelect, permissions);
 
 // Function to populate options
 function populateOptions(select, options) {
@@ -34,18 +37,23 @@ function createEmployee(e) {
   const name = nameInput.value;
   const email = emailInput.value;
   const role = roleSelect.value;
-  const selectedPermissions = Array.from(permissionsSelect.selectedOptions).map(option => option.value);
 
   const employee = {
+    id: Date.now(),
     name,
     email,
-    role,
-    permissions: selectedPermissions
+    role
   };
 
-  saveEmployee(employee); // Replace with your implementation
+  employees.push(employee);
   clearForm();
-  renderEmployees(); // Render the updated employee list
+  renderEmployees();
+}
+
+// Function to delete an employee
+function deleteEmployee(id) {
+  employees = employees.filter(employee => employee.id !== id);
+  renderEmployees();
 }
 
 // Function to clear the form inputs
@@ -53,36 +61,24 @@ function clearForm() {
   nameInput.value = '';
   emailInput.value = '';
   roleSelect.value = roles[0];
-  permissionsSelect.selectedIndex = -1;
 }
 
 // Function to render the employee list
-async function renderEmployees() {
-
+function renderEmployees() {
   const tbody = employeeTable.querySelector('tbody');
   tbody.innerHTML = '';
-  console.log("pre");
-  await fetch("http://localhost:3000/users").then((response) => {
-    return response.json()
-  }).then((json) => {
-    let employees = json;
-    console.log(employees);
-      let surname = 'blank';
-      employees.forEach(employee => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-        <td>${employee.name}</td>
-        <td>${surname}</td>
-        <td>${employee.email}</td>
-        <td>${employee.roles[0].name}</td>
-        <td>${employee.permissions}</td>
-        <td>
-          <button onclick="editEmployee(${employee.id})">Edit</button>
-          <button class="delete" onclick="deleteEmployee(${employee.id})">Delete</button>
-        </td>
-      `;
-        tbody.appendChild(row);
-      });
+
+  employees.forEach(employee => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${employee.name}</td>
+      <td>${employee.email}</td>
+      <td>${employee.role}</td>
+      <td>
+        <button class="delete" onclick="deleteEmployee(${employee.id})">Delete</button>
+      </td>
+    `;
+    tbody.appendChild(row);
   });
 }
 
