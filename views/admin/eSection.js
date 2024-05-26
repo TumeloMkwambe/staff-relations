@@ -1,7 +1,13 @@
-// employee.js
-
-// Sample data for roles and permissions
+// eSection.js
+// Sample data for roles
 const roles = ['Admin', 'Manager', 'Employee'];
+
+// Sample data for employees
+let employees = [
+  { id: 1, name: 'Nicki Minaj', email: 'pink@example.com', role: 'Admin' },
+  { id: 2, name: 'Lana Del Rey', email: 'black@example.com', role: 'Manager' },
+  { id: 3, name: 'Donald Trump', email: 'red@example.com', role: 'Employee' }
+];
 
 // DOM elements
 const employeeTable = document.getElementById('employeeTable');
@@ -10,7 +16,7 @@ const nameInput = document.getElementById('nameInput');
 const emailInput = document.getElementById('emailInput');
 const roleSelect = document.getElementById('roleSelect');
 
-// Populate role and permissions options
+// Populate role options
 populateOptions(roleSelect, roles);
 
 // Function to populate options
@@ -33,14 +39,21 @@ function createEmployee(e) {
   const role = roleSelect.value;
 
   const employee = {
+    id: Date.now(),
     name,
     email,
     role
   };
 
-  saveEmployee(employee); // Replace with your implementation
+  employees.push(employee);
   clearForm();
-  renderEmployees(); // Render the updated employee list
+  renderEmployees();
+}
+
+// Function to delete an employee
+function deleteEmployee(id) {
+  employees = employees.filter(employee => employee.id !== id);
+  renderEmployees();
 }
 
 // Function to clear the form inputs
@@ -51,29 +64,21 @@ function clearForm() {
 }
 
 // Function to render the employee list
-async function renderEmployees() {
-
+function renderEmployees() {
   const tbody = employeeTable.querySelector('tbody');
   tbody.innerHTML = '';
-  console.log("pre");
-  await fetch("http://localhost:3000/users").then((response) => {
-    return response.json()
-  }).then((json) => {
-    let employees = json;
-    console.log(employees);
-    let surname = 'blank';
-    employees.forEach(employee => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${employee.name}</td>
-        <td>${employee.email}</td>
-        <td>${employee.roles[0].name}</td>
-        <td>
-          <button class="delete" onclick="deleteEmployee(${employee.id})">Delete</button>
-        </td>
-      `;
-      tbody.appendChild(row);
-    });
+
+  employees.forEach(employee => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${employee.name}</td>
+      <td>${employee.email}</td>
+      <td>${employee.role}</td>
+      <td>
+        <button class="delete" onclick="deleteEmployee(${employee.id})">Delete</button>
+      </td>
+    `;
+    tbody.appendChild(row);
   });
 }
 
