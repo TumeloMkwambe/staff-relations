@@ -90,12 +90,12 @@ document.querySelector("#addTask").addEventListener("click", () => {
 // Function to delete a task
 function deleteTask(taskId) {
     remove(ref(database, `tasks/${taskId}`));
-
+    displayTimesheets();
     showAlert("Task Deleted!", "danger");
 }
 
 // Function to load tasks from Firebase database based on user's email
-function loadTasksFromFirebase(email) {
+function loadTasksFromFirebase() {
     const tableBody = document.querySelector("#task-list");
     tableBody.innerHTML = ""; // Clear existing tasks
 
@@ -106,7 +106,7 @@ function loadTasksFromFirebase(email) {
             Object.keys(tasks).forEach((taskId) => {
                 const task = tasks[taskId];
                 // Check if the task's email matches the user's email
-                if (task.employeeEmail === email) { // Update to employeeEmail
+                if (task.employeeEmail) { // Update to employeeEmail
                     const newRow = document.createElement("tr");
                     newRow.innerHTML = `
                         <td>${task.employeeName}</td>
@@ -130,22 +130,28 @@ function loadTasksFromFirebase(email) {
 }
 
 // Event listener for form submission
-document.querySelector("#retrieveTimesheetForm").addEventListener("submit", async (e) => {
-    e.preventDefault(); // Prevent default form submission
-    const email = document.querySelector("#userEmail").value;
-    if (email) {
-        loadTasksFromFirebase(email);
-    } else {
-        showAlert("Please enter an email address.", "danger");
-    }
+document.querySelector("#submitDetails").addEventListener("click", () => {
+    displayTimesheets();
+    console.log("Level 1!");
 });
+
+async function displayTimesheets(){
+    await fetch("https://staffrelations2024.azurewebsites.net/userinformation").then((response) => {
+        return response.json()
+    }).then((json) => {
+        let email = json.email;
+        loadTasksFromFirebase();
+    });
+}
+displayTimesheets();
 
 // Event listener for editing a task
 document.addEventListener("click", (e) => {
     if (e.target.classList.contains("edit")) {
         const taskId = e.target.dataset.id;
         // Fetch the task data from Firebase and populate the form fields for editing
-        tasksRef.child(taskId).once("value", (snapshot) => {
+        const taskRef = ref(database, `tasks/${taskId}`);
+        onValue(taskRef, (snapshot) => {
             const task = snapshot.val();
             document.querySelector("#employeeName").value = task.employeeName;
             document.querySelector("#employeeEmail").value = task.employeeEmail;
@@ -164,10 +170,8 @@ document.addEventListener("click", (e) => {
     }
 });
 
-// Event listener for downloading timesheet in PDF format
-document.querySelector("#downloadPDF").addEventListener("click", () => {
-    downloadTimesheet("pdf");
-});
+
+
 
 // Event listener for downloading timesheet in CSV format
 document.querySelector("#downloadCSV").addEventListener("click", () => {

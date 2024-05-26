@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     import('./eSection.js')
       .then(module => {
         // Call any necessary functions from the eBookMeal.js module
+        module.renderEmployees();
         // module.someFunction();
       })
       .catch(error => console.error('Error initializing meal booking:', error));

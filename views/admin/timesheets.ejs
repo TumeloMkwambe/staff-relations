@@ -10,11 +10,11 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <title>Employees Timesheets</title>
+    <title>Employees Timesheet</title>
   </head>
   <body>
     <section class="header">
-      <h1><b>Employees Timesheets</b></h1>
+      <h1><b>Employee Timesheet</b></h1>
     </section>
     <section class="body">
       <table>
@@ -53,25 +53,6 @@
           </tr>
         </tbody>
       </table>
-      <div class="col-10 mt-5">
-        <form id="retrieveTimesheetForm">
-          <div class="mb-3">
-            <label for="userName" class="form-label">Name:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="userName"
-              name="userName"
-            />
-            <label for="userEmail" class="form-label">Email:</label>
-            <input
-              type="email"
-              class="form-control"
-              id="userEmail"
-              name="userEmail"
-            />
-            <!-- Update type to email -->
-          </div>
           <button id="submitDetails" type="submit" class="btn btn-primary">
             Retrieve Timesheet
           </button>
@@ -100,6 +81,6 @@
         <button id="downloadCSV" class="btn btn-primary">Download CSV</button>
       </div>
     </section>
-    <script src="timesheets.js" type="module"></script>
+    <script src="timesheet.js" type="module"></script>
   </body>
 </html>

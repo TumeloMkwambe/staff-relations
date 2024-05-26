@@ -90,7 +90,7 @@ document.querySelector("#addTask").addEventListener("click", () => {
 // Function to delete a task
 function deleteTask(taskId) {
     remove(ref(database, `tasks/${taskId}`));
-
+    displayTimesheets();
     showAlert("Task Deleted!", "danger");
 }
 
@@ -129,8 +129,14 @@ function loadTasksFromFirebase(email) {
     });
 }
 
+// Event listener for form submission
+document.querySelector("#submitDetails").addEventListener("click", () => {
+    displayTimesheets();
+    console.log("Level 1!");
+});
+
 async function displayTimesheets(){
-    await fetch("http://localhost:3000/userinformation").then((response) => {
+    await fetch("https://staffrelations2024.azurewebsites.net/userinformation").then((response) => {
         return response.json()
     }).then((json) => {
         let email = json.email;
@@ -144,7 +150,8 @@ document.addEventListener("click", (e) => {
     if (e.target.classList.contains("edit")) {
         const taskId = e.target.dataset.id;
         // Fetch the task data from Firebase and populate the form fields for editing
-        tasksRef.child(taskId).once("value", (snapshot) => {
+        const taskRef = ref(database, `tasks/${taskId}`);
+        onValue(taskRef, (snapshot) => {
             const task = snapshot.val();
             document.querySelector("#employeeName").value = task.employeeName;
             document.querySelector("#employeeEmail").value = task.employeeEmail;
@@ -163,10 +170,8 @@ document.addEventListener("click", (e) => {
     }
 });
 
-// Event listener for downloading timesheet in PDF format
-document.querySelector("#downloadPDF").addEventListener("click", () => {
-    downloadTimesheet("pdf");
-});
+
+
 
 // Event listener for downloading timesheet in CSV format
 document.querySelector("#downloadCSV").addEventListener("click", () => {
