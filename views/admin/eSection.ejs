@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Management</title>
   <link rel="stylesheet" href="eSection.css">
 </head>
+
 <body>
   <header>
     <h1>Employee Management</h1>
@@ -15,12 +17,8 @@
       <h2>Create New Employee</h2>
       <form id="newEmployeeForm">
         <div class="form-group">
-          <label for="nameInput">Name:</label>
-          <input type="text" id="nameInput" placeholder="Enter name" required>
-        </div>
-        <div class="form-group">
-          <label for="surnameInput">Surname:</label>
-          <input type="text" id="surnameInput" placeholder="Enter surname" required>
+          <label for="nameInput">Full Name:</label>
+          <input type="text" id="nameInput" placeholder="Enter full name" required>
         </div>
         <div class="form-group">
           <label for="emailInput">Email:</label>
@@ -29,10 +27,6 @@
         <div class="form-group">
           <label for="roleSelect">Role:</label>
           <select id="roleSelect" required></select>
-        </div>
-        <div class="form-group">
-          <label for="permissionsSelect">Permissions:</label>
-          <select id="permissionsSelect" required></select>
         </div>
         <button type="submit">Create Employee</button>
       </form>
@@ -43,10 +37,8 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>Surname</th>
             <th>Email</th>
             <th>Role</th>
-            <th>Permissions</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -58,4 +50,5 @@
   </main>
   <script src="eSection.js"></script>
 </body>
+
 </html>
